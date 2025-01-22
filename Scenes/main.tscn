@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://pax7ea6v6gdl"]
+
+[ext_resource type="Script" path="res://Scripts/bubble.gd" id="1_7wmis"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_t7ps7"]
+[ext_resource type="Texture2D" uid="uid://bniq2b3u828o7" path="res://Assets/bubble.png" id="3_6qj8t"]
+[ext_resource type="Shader" path="res://Scenes/bubbleshader.gdshader" id="4_gpmgj"]
+[ext_resource type="Script" path="res://Scenes/Bottle.gd" id="4_mnibe"]
+[ext_resource type="Texture2D" uid="uid://d26a1kodf2rle" path="res://Assets/bubble_blower_1.png" id="4_votq6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kl0e"]
+shader = ExtResource("4_gpmgj")
+shader_parameter/time_multiplier = 0.2
+shader_parameter/intensity = 0.001
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_t7ps7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 6
+
+[node name="Bubble2" type="Node2D" parent="."]
+script = ExtResource("1_7wmis")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bubble2"]
+material = SubResource("ShaderMaterial_6kl0e")
+texture = ExtResource("3_6qj8t")
+
+[node name="Bottle" type="Node2D" parent="."]
+script = ExtResource("4_mnibe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottle"]
+texture = ExtResource("4_votq6")
