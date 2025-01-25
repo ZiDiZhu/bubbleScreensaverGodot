@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 				create_bubble()
 			else:
 				grow_bubble(delta)
-				# current_bubble.position = current_bubble.to_global(get_global_mouse_position())
+				current_bubble.global_position = get_global_mouse_position() - Vector2(wand_instance.texture.get_width()/2,0)
 		elif Input.is_action_just_released("left_click") and current_bubble != null:
 			release_bubble()
 	if mouseIsOver() and not is_selected:
@@ -63,8 +63,9 @@ func create_bubble():
 	print("new bubble")
 	current_bubble.isReleased = false
 	current_bubble.velocity = Vector2(0,0)
+	current_bubble.global_position = get_global_mouse_position() - Vector2(wand_instance.texture.get_width()/2,0)
+
 	#offset the transform of the bubble blower bottle
-	current_bubble.position = current_bubble.to_global(get_global_mouse_position()-Vector2(wand_instance.texture.get_width()/2,0))
 	get_tree().root.add_child(current_bubble)
 
 func grow_bubble(delta):

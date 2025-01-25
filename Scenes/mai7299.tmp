@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pax7ea6v6gdl"]
+[gd_scene load_steps=8 format=3 uid="uid://pax7ea6v6gdl"]
 
 [ext_resource type="Script" path="res://Scripts/bubble.gd" id="1_7wmis"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_t7ps7"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://Scenes/bubbleshader.gdshader" id="4_gpmgj"]
 [ext_resource type="Script" path="res://Scenes/Bottle.gd" id="4_mnibe"]
 [ext_resource type="Texture2D" uid="uid://d26a1kodf2rle" path="res://Assets/bubble_blower_1.png" id="4_votq6"]
-[ext_resource type="PackedScene" uid="uid://dwq11vpfjj34r" path="res://Scenes/menu.tscn" id="7_vi2sb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6kl0e"]
 shader = ExtResource("4_gpmgj")
@@ -27,15 +26,7 @@ material = SubResource("ShaderMaterial_6kl0e")
 texture = ExtResource("3_6qj8t")
 
 [node name="Bottle" type="Node2D" parent="."]
-position = Vector2(-257, 129)
-scale = Vector2(0.875, 0.875)
 script = ExtResource("4_mnibe")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bottle"]
 texture = ExtResource("4_votq6")
-
-[node name="Menu" parent="." instance=ExtResource("7_vi2sb")]
-offset_left = -516.0
-offset_top = 197.0
-offset_right = -516.0
-offset_bottom = 197.0
