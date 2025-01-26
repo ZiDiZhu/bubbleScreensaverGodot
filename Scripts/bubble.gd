@@ -27,8 +27,11 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if mouseIsOver():
+			$audio.play()
 			print("popped")
 			emit_signal("popped")
+			
+			await get_tree().create_timer(0.05).timeout
 			queue_free()
 	
 func mouseIsOver() -> bool:

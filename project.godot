@@ -17,12 +17,17 @@ boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://Assets/bubble.png"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
+window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
 
 [input]

@@ -73,11 +73,28 @@ text = "2001/01/01 Monday"
 
 [node name="bgmToggle" type="CheckBox" parent="."]
 layout_mode = 2
-offset_left = 217.0
-offset_top = -23.0
-offset_right = 302.0
-offset_bottom = 8.0
+offset_left = 17.0
+offset_top = 90.0
+offset_right = 102.0
+offset_bottom = 121.0
+button_pressed = true
 text = "bgm"
 
 [node name="bgm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ygb40")
+autoplay = true
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 90.0
+offset_right = 230.0
+offset_bottom = 121.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+selected = 0
+item_count = 3
+popup/item_0/text = "bgm off"
+popup/item_1/text = "bgm1"
+popup/item_1/id = 1
+popup/item_2/text = "bgm2"
+popup/item_2/id = 2

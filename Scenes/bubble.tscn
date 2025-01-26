@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cufk05nqfymlp"]
+[gd_scene load_steps=6 format=3 uid="uid://cufk05nqfymlp"]
 
 [ext_resource type="Script" path="res://Scripts/bubble.gd" id="1_qmlf7"]
 [ext_resource type="Shader" path="res://Scenes/bubbleshader.gdshader" id="2_dgi0t"]
 [ext_resource type="Texture2D" uid="uid://bniq2b3u828o7" path="res://Assets/bubble.png" id="2_nq86r"]
+[ext_resource type="AudioStream" uid="uid://wem6xeu2uv" path="res://Assets/pop1.ogg" id="4_m8f2p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lkcad"]
 shader = ExtResource("2_dgi0t")
-shader_parameter/time_multiplier = 1.0
+shader_parameter/time_multiplier = 0.13
 shader_parameter/intensity = 0.1
 
 [node name="Bubble" type="Node2D"]
@@ -15,3 +16,6 @@ script = ExtResource("1_qmlf7")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_lkcad")
 texture = ExtResource("2_nq86r")
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_m8f2p")
