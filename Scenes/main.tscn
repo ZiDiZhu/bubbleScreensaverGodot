@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_t7ps7"]
 [ext_resource type="Texture2D" uid="uid://bniq2b3u828o7" path="res://Assets/bubble.png" id="3_6qj8t"]
 [ext_resource type="Shader" path="res://Scenes/bubbleshader.gdshader" id="4_gpmgj"]
-[ext_resource type="Script" path="res://Scenes/Bottle.gd" id="4_mnibe"]
+[ext_resource type="Script" path="res://Scripts/Bottle.gd" id="4_mnibe"]
 [ext_resource type="Texture2D" uid="uid://d26a1kodf2rle" path="res://Assets/bubble_blower_1.png" id="4_votq6"]
 [ext_resource type="PackedScene" uid="uid://dwq11vpfjj34r" path="res://Scenes/menu.tscn" id="7_vi2sb"]
 

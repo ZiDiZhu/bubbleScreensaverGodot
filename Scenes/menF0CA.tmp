@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwq11vpfjj34r"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_2iu5c"]
+[ext_resource type="Texture2D" uid="uid://dmhkqc10hrv2l" path="res://Assets/Logo_bubblebliss.png" id="1_ha8wg"]
+[ext_resource type="Script" path="res://Scenes/exit.gd" id="3_pxiib"]
+[ext_resource type="AudioStream" uid="uid://bkxqmjf466gse" path="res://Assets/blue_moon_apartment.wav" id="3_ygb40"]
+[ext_resource type="FontFile" uid="uid://dd1pf6ulaw3qr" path="res://Assets/Digital Dot Roadsign.otf" id="4_1km81"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2iu5c")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 85.0
+offset_bottom = 58.0
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(111, -13)
+texture = ExtResource("1_ha8wg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="LinkButton" type="LinkButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "by Zidigital"
+uri = "https://zidizhu.github.io/portfolio/"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXIT"
+script = ExtResource("3_pxiib")
+
+[node name="TimerLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 86.0
+offset_top = 110.0
+offset_right = 171.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "Timer"
+
+[node name="DateLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 102.0
+offset_top = 54.0
+offset_right = 479.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_1km81")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "2001/01/01 Monday"
+
+[node name="TimeLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_left = 102.0
+offset_top = 80.0
+offset_right = 309.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "00:00"
+
+[node name="bgmToggle" type="CheckBox" parent="."]
+layout_mode = 2
+offset_left = 208.0
+offset_top = -21.0
+offset_right = 293.0
+offset_bottom = 10.0
+text = "bgm"
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ygb40")
