@@ -10,14 +10,15 @@ config_version=5
 
 [application]
 
-config/name="BubbleScreensaver"
+config/name="BubbleBlissScreensaver"
 run/main_scene="res://Scenes/main.tscn"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://Assets/bubble.png"
+config/icon="res://Assets/Logo_bubblebliss.png"
 
 [display]
 

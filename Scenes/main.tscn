@@ -1,15 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://pax7ea6v6gdl"]
+[gd_scene load_steps=10 format=3 uid="uid://pax7ea6v6gdl"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_t7ps7"]
-[ext_resource type="Shader" path="res://Scenes/bubbleshader.gdshader" id="4_gpmgj"]
-[ext_resource type="Script" path="res://Scripts/Bottle.gd" id="4_mnibe"]
-[ext_resource type="Texture2D" uid="uid://d26a1kodf2rle" path="res://Assets/bubble_blower_1.png" id="4_votq6"]
+[ext_resource type="Texture2D" uid="uid://bar6o3y4yh1x2" path="res://Assets/bliss.jpg" id="2_moiyo"]
+[ext_resource type="PackedScene" uid="uid://bdhm64atl1l1n" path="res://Scenes/bottle.tscn" id="3_v2t8w"]
+[ext_resource type="Shader" path="res://Scripts/bubbleshader.gdshader" id="4_gpmgj"]
 [ext_resource type="PackedScene" uid="uid://dwq11vpfjj34r" path="res://Scenes/menu.tscn" id="7_vi2sb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmyxl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hcfg"]
 shader = ExtResource("4_gpmgj")
-shader_parameter/time_multiplier = 0.304
-shader_parameter/intensity = 0.421
+shader_parameter/time_multiplier = 0.095
+shader_parameter/intensity = 0.1
+shader_parameter/saturation = 0.439
+shader_parameter/alpha = 0.591
 
 [sub_resource type="Gradient" id="Gradient_qcd5o"]
 interpolation_mode = 2
@@ -26,7 +30,23 @@ fill_from = Vector2(0.555556, 0.371795)
 script = ExtResource("1_t7ps7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_jmyxl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -976.0
+offset_top = -555.0
+offset_right = 971.0
+offset_bottom = 555.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+texture = ExtResource("2_moiyo")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6hcfg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,16 +63,11 @@ texture = SubResource("GradientTexture2D_s2uxg")
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 6
 
-[node name="Bottle" type="Node2D" parent="."]
-position = Vector2(-257, 129)
-scale = Vector2(0.875, 0.875)
-script = ExtResource("4_mnibe")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bottle"]
-texture = ExtResource("4_votq6")
+[node name="Bottle" parent="." instance=ExtResource("3_v2t8w")]
+visible = false
 
 [node name="Menu" parent="." instance=ExtResource("7_vi2sb")]
-offset_left = -516.0
-offset_top = 197.0
-offset_right = -516.0
-offset_bottom = 197.0
+offset_left = -33.0
+offset_top = -2.0
+offset_right = -33.0
+offset_bottom = -2.0

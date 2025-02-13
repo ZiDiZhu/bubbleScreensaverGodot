@@ -1,10 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwq11vpfjj34r"]
+[gd_scene load_steps=12 format=3 uid="uid://dwq11vpfjj34r"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_2iu5c"]
 [ext_resource type="Texture2D" uid="uid://dmhkqc10hrv2l" path="res://Assets/Logo_bubblebliss.png" id="1_ha8wg"]
+[ext_resource type="PackedScene" uid="uid://bdhm64atl1l1n" path="res://Scenes/bottle.tscn" id="2_847w5"]
+[ext_resource type="Shader" path="res://Scripts/bubbleshader.gdshader" id="3_otqjn"]
 [ext_resource type="Script" path="res://Scenes/exit.gd" id="3_pxiib"]
 [ext_resource type="AudioStream" uid="uid://bkxqmjf466gse" path="res://Assets/blue_moon_apartment.wav" id="3_ygb40"]
 [ext_resource type="FontFile" uid="uid://dd1pf6ulaw3qr" path="res://Assets/Digital Dot Roadsign.otf" id="4_1km81"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkyed"]
+shader = ExtResource("3_otqjn")
+shader_parameter/time_multiplier = 0.594
+shader_parameter/intensity = 0.142
+shader_parameter/saturation = 0.984
+shader_parameter/alpha = 0.134
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1omfd"]
+shader = ExtResource("3_otqjn")
+shader_parameter/time_multiplier = 1.968
+shader_parameter/intensity = 1.0
+shader_parameter/saturation = 0.889
+shader_parameter/alpha = 0.232
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6og24"]
+shader = ExtResource("3_otqjn")
+shader_parameter/time_multiplier = 0.443
+shader_parameter/intensity = 0.505
+shader_parameter/saturation = 0.419
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v57y4"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -15,57 +40,76 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2iu5c")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-offset_right = 85.0
-offset_bottom = 58.0
+[node name="Bottle" parent="." instance=ExtResource("2_847w5")]
+position = Vector2(166.5, -12)
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(109, -13)
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(16.5, 32)
 texture = ExtResource("1_ha8wg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_wkyed")
+position = Vector2(16.5, 32)
+texture = ExtResource("1_ha8wg")
 
-[node name="LinkButton" type="LinkButton" parent="MarginContainer/VBoxContainer"]
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1omfd")
+position = Vector2(16.5, 32)
+texture = ExtResource("1_ha8wg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.776471, 0.870588, 1, 1)
-theme_override_colors/font_outline_color = Color(0.635294, 0.00392157, 0.996078, 1)
-theme_override_constants/outline_size = 1
+offset_left = -158.0
+offset_top = 93.0
+offset_right = -60.0
+offset_bottom = 164.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_6og24")
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.455192, 0.869712, 0.951364, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/h_separation = 18
+theme_override_constants/icon_max_width = 6
+theme_override_constants/align_to_largest_stylebox = 4
 theme_override_fonts/font = ExtResource("4_1km81")
-theme_override_font_sizes/font_size = 23
-text = "by Zidigital"
-uri = "https://zidizhu.github.io/portfolio/"
-
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+theme_override_font_sizes/font_size = 50
 text = "EXIT"
 script = ExtResource("3_pxiib")
 
 [node name="TimerLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
-offset_left = 240.0
-offset_top = 89.0
-offset_right = 355.0
-offset_bottom = 147.0
+offset_left = -34.0
+offset_top = -63.0
+offset_right = 55.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/default_color = Color(0.682353, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.453743, 0.333846, 0.993899, 1)
+theme_override_constants/shadow_outline_size = 8
 theme_override_fonts/normal_font = ExtResource("4_1km81")
-theme_override_font_sizes/normal_font_size = 31
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "Timer"
 
 [node name="DateLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
-offset_left = 99.0
-offset_top = 55.0
-offset_right = 476.0
-offset_bottom = 86.0
+offset_left = -26.0
+offset_top = 104.0
+offset_right = 193.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.745098, 0.517647, 0.913725, 1)
+theme_override_colors/font_shadow_color = Color(0.0716065, 0.70959, 0.648914, 1)
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/normal_font = ExtResource("4_1km81")
 theme_override_font_sizes/normal_font_size = 31
 bbcode_enabled = true
@@ -73,24 +117,26 @@ text = "2001/01/01 Monday"
 
 [node name="bgmToggle" type="CheckBox" parent="."]
 layout_mode = 2
-offset_left = 17.0
-offset_top = 90.0
-offset_right = 102.0
-offset_bottom = 121.0
+offset_left = 211.0
+offset_top = 33.0
+offset_right = 296.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.466667, 0.415686, 0.670588, 1)
+theme_override_constants/outline_size = 6
 button_pressed = true
 text = "bgm"
 
-[node name="bgm" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ygb40")
-autoplay = true
-
 [node name="OptionButton" type="OptionButton" parent="."]
+material = SubResource("ShaderMaterial_v57y4")
 layout_mode = 0
-offset_left = 109.0
-offset_top = 90.0
-offset_right = 230.0
-offset_bottom = 121.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+offset_left = 213.0
+offset_top = 62.0
+offset_right = 305.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(1, 0.647059, 1, 1)
+theme_override_colors/font_outline_color = Color(0.337531, 0.453987, 0.600669, 1)
+theme_override_constants/outline_size = 6
 selected = 0
 item_count = 3
 popup/item_0/text = "bgm off"
@@ -98,3 +144,49 @@ popup/item_1/text = "bgm1"
 popup/item_1/id = 1
 popup/item_2/text = "bgm2"
 popup/item_2/id = 2
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-5.5, 68)
+stream = ExtResource("3_ygb40")
+autoplay = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 144.0
+offset_right = 232.0
+offset_bottom = 193.0
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.634666, 0.948667, 0.713275, 1)
+theme_override_colors/font_outline_color = Color(0.887279, 0.457966, 0.281811, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_1km81")
+theme_override_font_sizes/font_size = 23
+text = "ITCH.IO"
+uri = "https://z-digital.itch.io/bubblebliss"
+
+[node name="LinkButton3" type="LinkButton" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.776471, 0.870588, 1, 1)
+theme_override_colors/font_outline_color = Color(0.396045, 0.398234, 0.860351, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_1km81")
+theme_override_font_sizes/font_size = 23
+text = "GGJ2025"
+uri = "https://globalgamejam.org/games/2025/bubble-bliss-4"
+
+[node name="LinkButton2" type="LinkButton" parent="."]
+layout_mode = 2
+offset_left = -105.0
+offset_top = 48.0
+offset_right = -7.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 0.784718, 0.944463, 1)
+theme_override_colors/font_outline_color = Color(0.341176, 0.25098, 0.878431, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_1km81")
+theme_override_font_sizes/font_size = 23
+text = "by Zidigital"
+uri = "https://zidizhu.github.io/portfolio/"

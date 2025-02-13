@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdhm64atl1l1n"]
+
+[ext_resource type="Script" path="res://Scripts/Bottle.gd" id="1_h5uaa"]
+[ext_resource type="Texture2D" uid="uid://d26a1kodf2rle" path="res://Assets/bubble_blower_1.png" id="2_sekyn"]
+
+[node name="Bottle" type="Node2D"]
+position = Vector2(-257, 129)
+scale = Vector2(0.875, 0.875)
+script = ExtResource("1_h5uaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sekyn")

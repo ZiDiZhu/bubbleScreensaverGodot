@@ -10,6 +10,9 @@ var bgm_tracks = [preload("res://Assets/blue_moon_apartment.wav"), preload("res:
 # Current track index
 var current_track_index = 0
 
+var is_dragging = false
+var drag_offset = Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	bgmToggle.toggled.connect(_on_toggle_music)
@@ -17,6 +20,7 @@ func _ready() -> void:
 	bgm_selector.clear()
 	for i in range(bgm_tracks.size()):
 		bgm_selector.add_item("BGM " + str(i + 1))
+		
 
 	# Set the first track as default and play it
 	play_track(current_track_index)
@@ -42,13 +46,31 @@ func _on_track_finished():
 	current_track_index = (current_track_index + 1) % bgm_tracks.size()
 	play_track(current_track_index)
 	
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:  # Detect mouse button events
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				print(self.get_global_mouse_position().distance_to(global_position))
+				if isHovering():
+					is_dragging = true
+					drag_offset = global_position - self.get_global_mouse_position()
+				else:
+					is_dragging = false
+			if event.is_released():
+				is_dragging=false
+		
+func isHovering()-> bool:
+	var ishovering = self.get_global_mouse_position().distance_to(global_position) < 50 # Adjust for hitbox sensitivity
+	return ishovering
+		
 	
 func _process(delta):
-	# Update the elapsed time if the stopwatch is running
 	if is_running:
 		elapsed_time += delta
 		$TimerLabel.text = format_time(elapsed_time)
 	$DateLabel.text = format_datetime(Time.get_datetime_string_from_system())
+	if is_dragging:
+		global_position = self.get_global_mouse_position() + drag_offset
 
 func format_datetime(datetime_string):
 	# Example format: "2025-01-25T19:20:00"
